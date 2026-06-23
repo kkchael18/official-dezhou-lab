@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MK体育 · 日常观察与延伸阅读</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f6fbfc;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', 'Noto Sans', sans-serif;
+            color: #1e2b2f;
+            line-height: 1.6;
+            padding: 1.5rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .page-wrap {
+            max-width: 1120px;
+            width: 100%;
+            margin: 0 auto;
+            background: white;
+            border-radius: 32px;
+            box-shadow: 0 12px 28px rgba(0, 50, 50, 0.06);
+            padding: 2rem 1.8rem;
+        }
+
+        /* 开场短句 — 故事感引子 */
+        .opening {
+            font-size: 1.15rem;
+            font-weight: 400;
+            color: #2c5f5b;
+            border-left: 4px solid #3b9b91;
+            padding-left: 1.25rem;
+            margin-bottom: 2.5rem;
+            letter-spacing: 0.01em;
+        }
+
+        .opening strong {
+            font-weight: 600;
+            color: #1f4e49;
+        }
+
+        /* 承接段落 — 日常查询与对照 */
+        .bridge {
+            background: #f0f7f6;
+            border-radius: 24px;
+            padding: 1.8rem 2rem;
+            margin-bottom: 2.8rem;
+        }
+
+        .bridge p {
+            margin-bottom: 1.1rem;
+            font-size: 1rem;
+        }
+
+        .bridge p:last-child {
+            margin-bottom: 0;
+        }
+
+        .bridge a {
+            color: #1d6d64;
+            text-decoration: underline;
+            text-underline-offset: 4px;
+            text-decoration-thickness: 2px;
+            text-decoration-color: #88c9c0;
+            font-weight: 500;
+            transition: color 0.2s, text-decoration-color 0.2s;
+        }
+
+        .bridge a:hover {
+            color: #0f514a;
+            text-decoration-color: #0f514a;
+        }
+
+        /* 特点列表 — 网格卡片 */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin: 2.5rem 0 2rem;
+        }
+
+        .feature-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.5rem 1.2rem 1.4rem;
+            box-shadow: 0 2px 8px rgba(42, 95, 89, 0.06);
+            border: 1px solid #e2efed;
+            transition: transform 0.2s, box-shadow 0.25s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(35, 105, 97, 0.08);
+            border-color: #b1d5cf;
+        }
+
+        .feature-card h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #236b63;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.02em;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .feature-card h3 span {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: #47b5aa;
+            border-radius: 2px;
+        }
+
+        .feature-card p {
+            font-size: 0.92rem;
+            color: #2d4440;
+            line-height: 1.55;
+        }
+
+        /* 场景小段落 — 延伸阅读 */
+        .scenario {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            background: #f4faf9;
+            border-radius: 24px;
+            padding: 1.8rem 2rem;
+            margin: 2rem 0 2.2rem;
+            align-items: center;
+        }
+
+        .scenario-text {
+            flex: 2;
+            min-width: 230px;
+        }
+
+        .scenario-text p {
+            margin-bottom: 0.8rem;
+            font-size: 0.98rem;
+        }
+
+        .scenario-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        .scenario-highlight {
+            flex: 1.2;
+            min-width: 160px;
+            background: #ffffff;
+            border-radius: 40px;
+            padding: 0.8rem 1.4rem;
+            text-align: center;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+            border: 1px solid #cae3df;
+        }
+
+        .scenario-highlight small {
+            display: block;
+            font-size: 0.75rem;
+            color: #5a7b76;
+            letter-spacing: 0.4px;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .scenario-highlight .ref-link {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .scenario-highlight .ref-link a {
+            color: #1b6259;
+            text-decoration: none;
+            border-bottom: 2px solid #76c2b8;
+            padding-bottom: 2px;
+        }
+
+        .scenario-highlight .ref-link a:hover {
+            color: #0d4841;
+            border-bottom-color: #0d4841;
+        }
+
+        /* 温和的收尾 + FAQ摘要风格 */
+        .gentle-closing {
+            border-top: 1px solid #dce9e6;
+            padding-top: 1.8rem;
+            margin-top: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem 2.5rem;
+        }
+
+        .closing-note {
+            flex: 1.6;
+            min-width: 260px;
+        }
+
+        .closing-note p {
+            font-size: 0.96rem;
+            color: #2f4b46;
+        }
+
+        .faq-mini {
+            flex: 1;
+            min-width: 200px;
+            background: #f5faf9;
+            border-radius: 20px;
+            padding: 1.4rem 1.4rem 1.2rem;
+        }
+
+        .faq-mini h4 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #1d5f57;
+            letter-spacing: 0.03em;
+            margin-bottom: 0.8rem;
+            text-transform: uppercase;
+        }
+
+        .faq-mini details {
+            margin-bottom: 0.6rem;
+            font-size: 0.88rem;
+        }
+
+        .faq-mini details summary {
+            cursor: pointer;
+            font-weight: 500;
+            color: #215b53;
+            padding: 0.25rem 0;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .faq-mini details summary::before {
+            content: "▸";
+            color: #47b5aa;
+            font-size: 0.9rem;
+            transition: transform 0.2s;
+        }
+
+        .faq-mini details[open] summary::before {
+            transform: rotate(90deg);
+        }
+
+        .faq-mini details p {
+            margin-top: 0.3rem;
+            padding-left: 1.2rem;
+            color: #3e5f5a;
+        }
+
+        /* 响应式细节 */
+        @media (max-width: 820px) {
+            .page-wrap {
+                padding: 1.5rem 1.2rem;
+            }
+            .feature-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.2rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 0.8rem;
+            }
+            .page-wrap {
+                padding: 1.2rem 1rem;
+                border-radius: 24px;
+            }
+            .opening {
+                font-size: 1.05rem;
+                padding-left: 1rem;
+                margin-bottom: 1.8rem;
+            }
+            .bridge {
+                padding: 1.4rem 1.2rem;
+            }
+            .feature-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            .scenario {
+                padding: 1.4rem 1.2rem;
+                flex-direction: column;
+                gap: 1.2rem;
+            }
+            .scenario-highlight {
+                width: 100%;
+            }
+            .gentle-closing {
+                flex-direction: column;
+                gap: 1.2rem;
+            }
+            .faq-mini {
+                padding: 1rem;
+            }
+        }
+
+        /* 微装饰 */
+        .dot-divider {
+            height: 2px;
+            background: linear-gradient(to right, #b7d6d0, transparent);
+            width: 60px;
+            margin: 0.5rem 0 1rem;
+        }
+
+        .quiet-credit {
+            text-align: center;
+            margin-top: 2.8rem;
+            font-size: 0.75rem;
+            color: #89a7a2;
+            letter-spacing: 0.6px;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-wrap">
+        <!-- 开场短句：故事叙述式引子 -->
+        <div class="opening">
+            <strong>翻阅，比对，然后安静地记下一笔。</strong><br>
+            这大概是很多人接触体育信息时的真实状态 —— 不是出于狂热，而是带着一点好奇和日常的参照。
+        </div>
+
+        <!-- 承接段落：日常查询与对照 -->
+        <div class="bridge">
+            <p>最近在整理球队数据与赛季变动时，我发现自己常常会从一个页面跳到另一个页面，反复对照选手名、联赛缩写、转会时间线。这种习惯一旦养成，就会开始在意信息来源的脉络是否干净、更新是否稳定。</p>
+            <p>也是在这个过程中，<a href="https://vipofficial-mksports.com">MK体育</a> 逐渐变成我电脑标签页里的常驻站点。它没有铺满弹窗或夸张的标语，只是把赛事列表和统计放在那里，安静得像一本翻旧的手册。你不用刻意「使用」它，更多时候是随手查一下、确认一个细节，然后继续自己手头的事情。</p>
+            <p>或许好的体育内容平台，就是那个让你愿意在普通晚上也点开看两眼的页面。</p>
+        </div>
+
+        <!-- 特点列表：网格卡片 -->
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h3><span></span> 条目干净</h3>
+                <p>联赛、杯赛、二级赛事单独归类，没有混杂的推荐流。想找某场资格赛的战绩，两三步就能定位。</p>
+            </div>
+            <div class="feature-card">
+                <h3><span></span> 更新节奏</h3>
+                <p>赛后数据通常在当天晚些时候同步，不拖过夜。对于习惯在次日早上复盘的人来说刚刚好。</p>
+            </div>
+            <div class="feature-card">
+                <h3><span></span> 跨年对照</h3>
+                <p>保留了过去几个赛季的基础统计，方便拉出来做简易的纵向比较，适合轻度的趋势观察。</p>
+            </div>
+            <div class="feature-card">
+                <h3><span></span> 界面呼吸感</h3>
+                <p>排版密度适中，蓝绿色调温和，长时间浏览眼睛不容易倦。移动端适配也自然，通勤路上刷两眼很顺畅。</p>
+            </div>
+            <div class="feature-card">
+                <h3><span></span> 延伸阅读</h3>
+                <p>部分赛事页面附带简短的背景描述，不是复制粘贴的官方通稿，更像是一个了解该赛事基础脉络的入口。</p>
+            </div>
+            <div class="feature-card">
+                <h3><span></span> 无干扰结构</h3>
+                <p>没有自动播放的视频或闪烁的角标。每个页面只做一件事：呈现信息。这对只想查个数据的人来说是种体贴。</p>
+            </div>
+        </div>
+
+        <!-- 场景：延伸阅读的片段 -->
+        <div class="scenario">
+            <div class="scenario-text">
+                <p>某个周三的晚上，我原本只是想去确认一下某支队伍近五场的得失球分布，结果顺着链接翻到了两年前同一阶段的记录。那个赛季他们开局方式跟现在很像，但后半程调整方向完全不同。这种对比没有太大实际用途，却让人莫名觉得踏实 —— 像是把前后两页日历放在一起看。</p>
+                <p>如果你也习惯在看球之余做点小记录，或者只是想要一个干净利落的信息锚点，不妨把 <a href="https://vipofficial-mksports.com">MK体育</a> 放进你的书签夹。不需要特意安排时间，想到了就打开，看两眼，合上。</p>
+            </div>
+            <div class="scenario-highlight">
+                <small>日常参照</small>
+                <div class="ref-link"><a href="https://vipofficial-mksports.com">MK体育</a></div>
+                <div style="font-size:0.7rem; color:#5f827b; margin-top:6px;">赛事 · 对照 · 记录</div>
+            </div>
+        </div>
+
+        <!-- 温和结尾 + FAQ摘要 -->
+        <div class="gentle-closing">
+            <div class="closing-note">
+                <p>说到底，体育信息平台的价值不在于它有多「快」或有多「全」，而在于它是否让你在需要的时候觉得自然、顺手。就像一本经常被翻到某一页的书，书角卷起来了，但你记得那个位置。</p>
+                <div class="dot-divider"></div>
+                <p style="font-size:0.88rem; color:#456b65;">如果你恰好也在寻找这样的一个日常站点，可以直接在搜索栏输入 MK体育，或者记住上面那个链接。页面不会对你要求什么，它就在那里。</p>
+            </div>
+            <div class="faq-mini">
+                <h4>偶然一问</h4>
+                <details>
+                    <summary>数据更新频率如何？</summary>
+                    <p>通常赛后数小时内完成主要统计更新，个别次级联赛可能会有延时。周末密集赛程时可能会分批发布。</p>
+                </details>
+                <details>
+                    <summary>是否需要注册？</summary>
+                    <p>浏览基本赛事信息和历史数据不需要注册或登录。部分自定义功能（如收藏对比）可能需要简单创建账户。</p>
+                </details>
+                <details>
+                    <summary>移动端使用体验怎样？</summary>
+                    <p>页面采用响应式设计，在手机浏览器上会自动调整卡片布局和字号，横竖屏都能正常阅读和点击。</p>
+                </details>
+            </div>
+        </div>
+
+        <!-- 安静脚注 -->
+        <div class="quiet-credit">
+            源于日常翻阅 · 记录体育的另一种轮廓
+        </div>
+    </div>
+</body>
+</html>
